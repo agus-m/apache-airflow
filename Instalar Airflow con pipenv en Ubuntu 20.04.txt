@@ -43,13 +43,13 @@ airflow scheduler -D
 
 airflow users create -u user -p password -f firstname -l lastname -r Admin -e emailadress@gmail.com
 
-16) Copiar DAGs a pipenv_airflow/airflow/dags
+16) Para usar la conexión a oracle es necesario crear primero la conexión oracle_default, porque no viene creada por defecto.
 
 17) crear carpeta para los archivos, por ejemplo 
 
 pipenv_airflow\archivos
 
-18) Para usar la conexión a oracle es necesario crear primero la conexión oracle_default, porque no viene creada por defecto.
+18) Copiar DAGs a pipenv_airflow/airflow/dags
 
 
 En los otros ambientes se puede hacer un deploy usando pipenv sync. Para eso se pueden seguir los siguientes pasos.
@@ -80,6 +80,6 @@ airflow scheduler -D
 
 airflow users create -u user -p password -f firstname -l lastname -r Admin -e emailadress@gmail.com
 
-10) Copiar DAGs a pipenv_airflow/airflow/dags
+10) Para usar la conexión a oracle es necesario crear primero la conexión oracle_default, porque no viene creada por defecto.
 
-11) Para usar la conexión a oracle es necesario crear primero la conexión oracle_default, porque no viene creada por defecto.
+11) Copiar DAGs a pipenv_airflow/airflow/dags

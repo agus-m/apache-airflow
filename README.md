@@ -2,7 +2,7 @@
 
 This project aims to guide a beginer user step by step teaching how to install apache-airflow on ubuntu 20.04 LTS from scratch.
 
-The instructions are available in Spanish and English
+The instructions are available in Spanish and in English
 
 The file "Instalar Airflow con pipenv en Ubuntu 20.04.txt" has the instruccions in spanish.
 

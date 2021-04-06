@@ -1,0 +1,85 @@
+
+En la primer instalación desde cero en dev hay que seguir las siguientes instrucciones
+
+0) Python 3.8.5 ya viene instalado en ubuntu 20.04, hacer apt-get update y apt-get upgrade
+
+1) Instalar pip con sudo apt install python3-pip
+
+2) Instalar pipenv con pip3 install pipenv
+
+3) Crear la carpeta del proyecto en home, por ejemplo mkdir pipenv_airflow, despues cd pipenv_airflow
+
+4) pipenv shell
+
+5) pipenv install apache-airflow
+
+6) pipenv install cx-oracle 
+
+7) pipenv install openpyxl 
+
+8) pipenv install apache-airflow-providers-oracle 
+
+9) Copiar instantclient_11_2 a /opt/oracle/instantclient_11_2
+
+10) # Set home for airflow in a root of your project (specified in .env file)
+echo "AIRFLOW_HOME=${PWD}/airflow" >> .env
+
+11) # Set path for Oracle Instant Client
+echo set LD_LIBRARY_PATH environment variable >> .env
+echo export LD_LIBRARY_PATH=/opt/oracle/instantclient_11_2 >> .env
+
+12) airflow db init
+mkdir -p ${AIRFLOW_HOME}/dags/
+
+13) Iniciar webserver (como daemon con -D)
+
+(pipenv_airflow)  airflow webserver -p 8080 -D
+
+14) Iniciar el scheduler
+
+airflow scheduler -D
+
+15) Crear usuarios 
+
+airflow users create -u user -p password -f firstname -l lastname -r Admin -e emailadress@gmail.com
+
+16) Copiar DAGs a pipenv_airflow/airflow/dags
+
+17) crear carpeta para los archivos, por ejemplo 
+
+pipenv_airflow\archivos
+
+18) Para usar la conexión a oracle es necesario crear primero la conexión oracle_default, porque no viene creada por defecto.
+
+
+En los otros ambientes se puede hacer un deploy usando pipenv sync. Para eso se pueden seguir los siguientes pasos.
+
+
+1) Crear una carpeta del proyecto en home igual que el ambiente anterior, mkdir pipenv_airflow, despues cd pipenv_airflow
+
+2) Copiar a esta carpeta los 3 archivos archivos creados en dev: pipfile, pipfile.lock y .env
+
+3) ejecutar el comando pipenv sync
+
+4) Copiar instantclient_11_2 a /opt/oracle/instantclient_11_2
+
+5) crear carpeta para los archivos pipenv_airflow/archivos
+
+6) airflow db init
+mkdir -p ${AIRFLOW_HOME}/dags/
+
+7) Iniciar webserver (como daemon con -D)
+
+(pipenv_airflow)  airflow webserver -p 8080 -D
+
+8) Iniciar el scheduler
+
+airflow scheduler -D
+
+9) Crear usuarios 
+
+airflow users create -u user -p password -f firstname -l lastname -r Admin -e emailadress@gmail.com
+
+10) Copiar DAGs a pipenv_airflow/airflow/dags
+
+11) Para usar la conexión a oracle es necesario crear primero la conexión oracle_default, porque no viene creada por defecto.
